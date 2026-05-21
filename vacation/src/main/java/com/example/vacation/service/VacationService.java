@@ -9,6 +9,7 @@ import com.example.vacation.repository.VacationRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @Service
@@ -38,5 +39,5 @@ public class VacationService {
     private VacationResponse mapToResponse(Vacation vacation){
         return VacationResponse.builder().id(vacation.getId()).employeeName(vacation.getEmployeeName())
                 .startDate(vacation.getStartDate()).endDate(vacation.getEndDate()).status(vacation.getStatus())
-                .approvedBy(vacation.getApprovedBy()).build();}
+                .approvedBy(vacation.getApprovedBy()).days(ChronoUnit.DAYS.between(vacation.getStartDate(), vacation.getEndDate())+1).build();}
 }

@@ -15,4 +15,5 @@ public class VacationResponse {
     private LocalDate endDate;
     private VacationStatus status;
     private String approvedBy;
+    private long days;
 }
